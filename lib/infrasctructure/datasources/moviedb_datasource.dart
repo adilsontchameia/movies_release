@@ -1,21 +1,11 @@
-import 'package:dio/dio.dart';
-import 'package:movies_release/config/constants/environment.dart';
-import 'package:movies_release/domain/entities/movie.dart';
-import 'package:movies_release/infrasctructure/mappers/movie_mapper.dart';
-import 'package:movies_release/infrasctructure/models/moviedb/movie_details.dart';
-
+import '../../config/constants/app_constants.dart';
 import '../../domain/datasources/movies_datasource.dart';
+import '../../presentation/providers/providers.dart';
+import '../mappers/movie_mapper.dart';
+import '../models/moviedb/movie_details.dart';
 import '../models/moviedb/moviedb_response.dart';
 
 class MoviedbDatasource extends MoviesDatasource {
-  final dio = Dio(BaseOptions(
-    baseUrl: 'https://api.themoviedb.org/3',
-    queryParameters: {
-      'api_key': Environment.theMovieDbKey,
-      'language': 'pt-PT',
-    },
-  ));
-
   List<Movie> _jsonToMovies(Map<String, dynamic> json) {
     final movieDbResponse = MovieDbResponse.fromJson(json);
 
@@ -29,7 +19,7 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
-    final response = await dio.get(
+    final response = await AppConstants.dio.get(
       '/movie/now_playing',
       queryParameters: {
         'page': page,
@@ -40,7 +30,7 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getPopular({int page = 1}) async {
-    final response = await dio.get(
+    final response = await AppConstants.dio.get(
       '/movie/popular',
       queryParameters: {
         'page': page,
@@ -51,7 +41,7 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getTopRated({int page = 1}) async {
-    final response = await dio.get(
+    final response = await AppConstants.dio.get(
       '/movie/top_rated',
       queryParameters: {
         'page': page,
@@ -62,7 +52,7 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<List<Movie>> getUpcoming({int page = 1}) async {
-    final response = await dio.get(
+    final response = await AppConstants.dio.get(
       '/movie/upcoming',
       queryParameters: {
         'page': page,
@@ -73,7 +63,7 @@ class MoviedbDatasource extends MoviesDatasource {
 
   @override
   Future<Movie> getMovieByID(String id) async {
-    final response = await dio.get('/movie/$id');
+    final response = await AppConstants.dio.get('/movie/$id');
     if (response.statusCode != 200) {
       throw Exception('Movie with id: $id not found');
     }
