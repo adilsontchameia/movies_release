@@ -62,6 +62,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: de801661ffdc20526e91ca3f1d716897b0b8141a
+      url: "https://github.com/java-james/flutter_dotenv"
+    source: git
+    version: "5.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
