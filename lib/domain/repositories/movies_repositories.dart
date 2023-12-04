@@ -1,5 +1,5 @@
 import '../entities/movie.dart';
 
-abstract class MoveRepository {
+abstract class MoviesRepository {
   Future<List<Movie>> getNowPlaying({int page = 1});
 }

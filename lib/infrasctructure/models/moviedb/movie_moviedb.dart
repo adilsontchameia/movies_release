@@ -11,7 +11,7 @@ class MovieMovieDb {
   final DateTime releaseDate;
   final String title;
   final bool video;
-  final double voteAverage;
+  final double voteAvarage;
   final int voteCount;
 
   MovieMovieDb({
@@ -27,7 +27,7 @@ class MovieMovieDb {
     required this.releaseDate,
     required this.title,
     required this.video,
-    required this.voteAverage,
+    required this.voteAvarage,
     required this.voteCount,
   });
 
@@ -44,7 +44,7 @@ class MovieMovieDb {
         releaseDate: DateTime.parse(json["release_date"]),
         title: json["title"],
         video: json["video"],
-        voteAverage: json["vote_average"]?.toDouble(),
+        voteAvarage: json["vote_average"]?.toDouble(),
         voteCount: json["vote_count"],
       );
 
@@ -62,7 +62,7 @@ class MovieMovieDb {
             "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
         "title": title,
         "video": video,
-        "vote_average": voteAverage,
+        "vote_average": voteAvarage,
         "vote_count": voteCount,
       };
 }

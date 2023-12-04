@@ -3,35 +3,34 @@ import 'movie_moviedb.dart';
 class MovieDbResponse {
   final Dates? dates;
   final int page;
-  final List<MovieMovieDb> movieMovieDbs;
+  final List<MovieMovieDb> results;
   final int totalPages;
-  final int totalMovieMovieDbs;
+  final int totalResults;
 
   MovieDbResponse({
     required this.dates,
     required this.page,
-    required this.movieMovieDbs,
+    required this.results,
     required this.totalPages,
-    required this.totalMovieMovieDbs,
+    required this.totalResults,
   });
 
   factory MovieDbResponse.fromJson(Map<String, dynamic> json) =>
       MovieDbResponse(
-        dates: json['dates'] ? Dates.fromJson(json["dates"]) : null,
+        dates: json['dates'] != null ? Dates.fromJson(json["dates"]) : null,
         page: json["page"],
-        movieMovieDbs: List<MovieMovieDb>.from(
-            json["MovieMovieDbs"].map((x) => MovieMovieDb.fromJson(x))),
+        results: List<MovieMovieDb>.from(
+            json["results"].map((x) => MovieMovieDb.fromJson(x))),
         totalPages: json["total_pages"],
-        totalMovieMovieDbs: json["total_MovieMovieDbs"],
+        totalResults: json["total_results"],
       );
 
   Map<String, dynamic> toJson() => {
         "dates": dates == null ? null : dates!.toJson(),
         "page": page,
-        "MovieMovieDbs":
-            List<dynamic>.from(movieMovieDbs.map((x) => x.toJson())),
+        "MovieMovieDbs": List<dynamic>.from(results.map((x) => x.toJson())),
         "total_pages": totalPages,
-        "total_MovieMovieDbs": totalMovieMovieDbs,
+        "total_results": totalResults,
       };
 }
 
