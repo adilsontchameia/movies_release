@@ -35,6 +35,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final initialLoading = ref.watch(initialLoadingProvider);
+    //check if all contents where loaded
+    if (initialLoading) return const FullScreenLoader();
+
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideShow = ref.watch(moviesSlideshowProvider);
     final popularMovies = ref.watch(popularMoviesProvider);
@@ -53,7 +57,9 @@ class _HomeViewState extends ConsumerState<_HomeView> {
           (context, index) {
             return Column(
               children: [
-                MoviesSlideShow(movies: moviesSlideShow),
+                MoviesSlideShow(
+                  movies: moviesSlideShow,
+                ),
                 MovieHorizontalListView(
                     movies: nowPlayingMovies,
                     title: 'In Theater',
