@@ -7,7 +7,7 @@ class MovieMapper {
   static Movie movieDbToEntity(MovieMovieDb movieDb) => Movie(
         adult: movieDb.adult,
         // ignore: unnecessary_null_comparison
-        backdropPath: (movieDb.backdropPath != null)
+        backdropPath: (movieDb.backdropPath != '')
             ? '${AppConstants.movieImageBaseUrl}/${movieDb.backdropPath}'
             : AppConstants.notFoundImageUrl,
         genreIds: movieDb.genreIds.map((e) => e.toString()).toList(),
@@ -17,10 +17,11 @@ class MovieMapper {
         overview: movieDb.overview,
         popularity: movieDb.popularity,
         // ignore: unnecessary_null_comparison
-        posterPath: (movieDb.posterPath != null)
+        posterPath: (movieDb.posterPath != '')
             ? '${AppConstants.movieImageBaseUrl}/${movieDb.posterPath}'
-            : 'no-poster',
-        releaseDate: movieDb.releaseDate,
+            : AppConstants.notFoundImageUrl,
+        releaseDate:
+            movieDb.releaseDate != null ? movieDb.releaseDate! : DateTime.now(),
         title: movieDb.title,
         video: movieDb.video,
         voteAvarage: movieDb.voteAvarage,
@@ -30,7 +31,7 @@ class MovieMapper {
   static Movie movieDetailsToEntity(MovieDetails movieDb) => Movie(
         adult: movieDb.adult,
         // ignore: unnecessary_null_comparison
-        backdropPath: (movieDb.backdropPath != null)
+        backdropPath: (movieDb.backdropPath != '')
             ? '${AppConstants.movieImageBaseUrl}/${movieDb.backdropPath}'
             : AppConstants.notFoundImageUrl,
         genreIds: movieDb.genres.map((e) => e.name).toList(),
@@ -40,9 +41,9 @@ class MovieMapper {
         overview: movieDb.overview,
         popularity: movieDb.popularity,
         // ignore: unnecessary_null_comparison
-        posterPath: (movieDb.posterPath != null)
+        posterPath: (movieDb.posterPath != '')
             ? '${AppConstants.movieImageBaseUrl}/${movieDb.posterPath}'
-            : 'no-poster',
+            : AppConstants.notFoundImageUrl,
         releaseDate: movieDb.releaseDate,
         title: movieDb.title,
         video: movieDb.video,
