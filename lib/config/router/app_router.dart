@@ -19,4 +19,8 @@ final appRouter = GoRouter(initialLocation: '/home/0', routes: [
               return MovieDetailsScreen(movieId: movieId);
             }),
       ]),
+  GoRoute(
+    path: '/',
+    redirect: (_, __) => '/home/0',
+  )
 ]);
