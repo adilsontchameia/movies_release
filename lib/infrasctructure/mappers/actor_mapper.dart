@@ -6,7 +6,7 @@ class ActorMapper {
   static Actor castToEntity(Cast cast) => Actor(
         id: cast.id,
         name: cast.name,
-        profilePath: cast.profilePath != null
+        profilePath: cast.profilePath != ''
             ? '${AppConstants.movieImageBaseUrl}/${cast.profilePath}'
             : AppConstants.notFoundImageUrl,
         character: cast.character,
