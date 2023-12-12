@@ -1,7 +1,7 @@
 import 'package:movies_release/domain/datasources/actors_datasource.dart';
 
 import '../../domain/entities/actor.dart';
-import '../../domain/repositories/actor_repositories.dart';
+import '../../domain/repositories/actor_repository.dart';
 
 class ActorRepositoryImpl extends ActorsRepository {
   final ActorsDatasource datasource;
