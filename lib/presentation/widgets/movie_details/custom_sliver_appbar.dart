@@ -15,6 +15,10 @@ class CustomSliverAppBar extends StatelessWidget {
       backgroundColor: Colors.white,
       expandedHeight: size.height * 0.7,
       foregroundColor: Colors.white,
+      actions: [
+        IconButton(
+            onPressed: () {}, icon: const Icon(Icons.favorite_outline_rounded))
+      ],
       flexibleSpace: FlexibleSpaceBar(
         titlePadding:
             const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -38,10 +42,10 @@ class CustomSliverAppBar extends StatelessWidget {
               ),
             ),
             const CustomGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.7, 1.0],
-              colors: [Colors.transparent, Colors.black87],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [0.0, 0.2],
+              colors: [Colors.black54, Colors.transparent],
             ),
             const CustomGradient(
               begin: Alignment.topLeft,
