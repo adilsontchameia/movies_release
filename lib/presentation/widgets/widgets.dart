@@ -5,3 +5,5 @@ export 'home_screen/movie_horizontal_listview.dart';
 export 'shared/full_screen_loader.dart';
 export 'movie_details/custom_gradient.dart';
 export 'movie_details/custom_sliver_appbar.dart';
+export 'views/movie_masonry.dart';
+export 'views/movie_poster_link.dart';
